@@ -1,0 +1,25 @@
+
+spring:
+  dubbo:
+    application:
+      #注册在注册中心的名称，唯一标识，请勿重复
+      id: user-provider
+      name: user-provider
+
+    #注册中心
+    #zookeeper集群：zookeeper://127.0.0.1:2181?backup=127.0.0.1:2180,127.0.0.1:2182
+    #单zookeeper服务：zookeeper://127.0.0.1:2181
+    registry:
+      protocol: zookeeper
+      address: zookeeper://39.106.124.34:2181
+
+    #暴露服务方式
+    protocol:
+      id: userProtocol
+      #暴露服务协议名称
+      name: dubbo
+      #暴露服务端口
+      port: 20020
+
+    #provider实现类所在包
+    scan: com.happycommunity.user.service
