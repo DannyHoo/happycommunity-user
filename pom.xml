@@ -23,24 +23,33 @@
 
     <!-- 设置项目依赖的版本属性 -->
     <properties>
+        <framework.version>0.0.1-SNAPSHOT</framework.version>
+        <happycommunity.user.interfac.version>1.0-SNAPSHOT</happycommunity.user.interfac.version>
+
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <spring-boot.version>1.5.1.RELEASE</spring-boot.version>
         <java.version>1.8</java.version>
         <dubbo-spring-boot>1.0.0</dubbo-spring-boot>
-
-        <framework.version>0.0.1-SNAPSHOT</framework.version>
-        <happycommunity.user.interfac.version>1.0-SNAPSHOT</happycommunity.user.interfac.version>
+        <mybatis-spring-boot.version>1.2.0</mybatis-spring-boot.version>
+        <mysql-connector.version>5.1.39</mysql-connector.version>
+        <druid.version>1.1.6</druid.version>
+        <junit.version>4.12</junit.version>
     </properties>
 
     <!-- 声明项目依赖管理 -->
     <dependencyManagement>
         <dependencies>
 
-            <!-- 内部模块 -->
+            <!-- ******************************************* 内部模块 ***************************************** -->
             <dependency>
                 <groupId>com.happycommunity.framework</groupId>
                 <artifactId>framework-common</artifactId>
+                <version>${framework.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.happycommunity.framework</groupId>
+                <artifactId>framework-core</artifactId>
                 <version>${framework.version}</version>
             </dependency>
             <dependency>
@@ -49,7 +58,7 @@
                 <version>${happycommunity.user.interfac.version}</version>
             </dependency>
 
-            <!-- Spring Boot 基本依赖-->
+            <!-- ************************************* Spring Boot 基本依赖 ************************************ -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter</artifactId>
@@ -57,21 +66,21 @@
             </dependency>
             <dependency>
                 <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-web</artifactId>
+                <version>${spring-boot.version}</version>
+            </dependency>
+
+            <!-- ******************************************* 测试相关 ****************************************** -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-test</artifactId>
                 <version>${spring-boot.version}</version>
                 <scope>test</scope>
             </dependency>
             <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-web</artifactId>
-                <version>${spring-boot.version}</version>
-            </dependency>
-            <!-- SpringBoot热部署，配置后，在classpath修改任何文件项目都将会自动重启。（此热部署会遇到 java.lang.ClassCastException 异常） -->
-            <!-- optional=true,依赖不会传递，该项目依赖devtools；之后依赖该项目的项目如果想要使用devtools，需要重新引入 -->
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-devtools</artifactId>
-                <optional>true</optional>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
             </dependency>
 
             <!-- Spring Boot Dubbo-->
@@ -81,15 +90,23 @@
                 <version>${dubbo-spring-boot}</version>
             </dependency>
 
-            <!-- 数据库相关-->
+            <!-- ****************************************** 数据库相关 *************************************** -->
+            <!-- Spring Boot Mybatis-->
             <dependency>
                 <groupId>org.mybatis.spring.boot</groupId>
                 <artifactId>mybatis-spring-boot-starter</artifactId>
-                <version>1.1.1</version>
+                <version>${mybatis-spring-boot.version}</version>
             </dependency>
+            <!-- MySQL 连接驱动依赖 -->
             <dependency>
                 <groupId>mysql</groupId>
                 <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql-connector.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid</artifactId>
+                <version>${druid.version}</version>
             </dependency>
 
         </dependencies>
