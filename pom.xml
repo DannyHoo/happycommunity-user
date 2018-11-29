@@ -24,7 +24,7 @@
     <!-- 设置项目依赖的版本属性 -->
     <properties>
         <framework.version>0.0.1-SNAPSHOT</framework.version>
-        <happycommunity.user.interfac.version>1.0-SNAPSHOT</happycommunity.user.interfac.version>
+        <happycommunity.user.version>1.0-SNAPSHOT</happycommunity.user.version>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -55,7 +55,7 @@
             <dependency>
                 <groupId>com.happycommunity.user</groupId>
                 <artifactId>user-interface</artifactId>
-                <version>${happycommunity.user.interfac.version}</version>
+                <version>${happycommunity.user.version}</version>
             </dependency>
 
             <!-- ************************************* Spring Boot 基本依赖 ************************************ -->
@@ -108,6 +108,8 @@
                 <artifactId>druid</artifactId>
                 <version>${druid.version}</version>
             </dependency>
+
+
 
         </dependencies>
     </dependencyManagement>

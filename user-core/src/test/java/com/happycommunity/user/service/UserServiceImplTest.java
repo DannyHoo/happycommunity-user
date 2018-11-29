@@ -1,6 +1,7 @@
 package com.happycommunity.user.service;
 
-import com.happycommunity.framework.common.dto.user.UserDTO;
+import com.alibaba.fastjson.JSON;
+import com.happycommunity.framework.common.model.dto.user.UserDTO;
 import com.happycommunity.uesr.service.UserService;
 import com.happycommunity.user.AbstractTest;
 import org.junit.Test;
@@ -19,7 +20,9 @@ public class UserServiceImplTest extends AbstractTest {
 
     @Test
     public void findByUserNameTest(){
-        UserDTO userDTO=userService.findUserByUserName("Danny");
-        System.out.println(userDTO.getUserName());
+        UserDTO userDTO=userService.findByUserName("Danny");
+        System.out.println(JSON.toJSONString(userDTO));
     }
+
+
 }

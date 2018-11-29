@@ -2,6 +2,9 @@ package com.happycommunity.user.dao;
 
 import com.happycommunity.user.domain.UserDO;
 import org.apache.ibatis.annotations.*;
+import org.apache.ibatis.mapping.StatementType;
+
+import java.util.List;
 
 /**
  * @author Danny
@@ -13,16 +16,21 @@ import org.apache.ibatis.annotations.*;
 public interface UserDAO {
 
     @Select("select * from t_user where userName=#{userName}")
-    @Results({
-            @Result(property = "id",column = "id"),
-            @Result(property = "createTime",column = "createTime"),
-            @Result(property = "updateTime",column = "updateTime"),
-            @Result(property = "comment",column = "comment"),
-            @Result(property = "userName",column = "userName"),
-            @Result(property = "mobileNo",column = "mobileNo"),
-            @Result(property = "password",column = "password"),
-            @Result(property = "email",column = "email")
-    })
     UserDO findByUserName(@Param("userName") String userName);
 
+
+    @Insert("insert into t_user(userName,mobileNo,password,email) values (#{userName},#{mobileNo},#{password},#{email})")
+    @SelectKey(before = false, keyProperty = "id", resultType = Long.class, statementType = StatementType.STATEMENT, statement = "SELECT LAST_INSERT_ID() AS id")
+    int insertUserDO(UserDO userDO);
+
+    @Insert({
+            "<script>"
+                    + "INSERT INTO t_user (userName,mobileNo,password,email) "
+                    + "VALUES "
+                    + "<foreach item='user' index='index' collection='userDOList' separator=','>"
+                    + "(#{user.userName},#{user.mobileNo},#{user.password},#{user.email})"
+                    + "</foreach>"
+                    + "</script>"
+    })
+    int insertUserDOBatch(@Param("userDOList") List<UserDO> userDOList);
 }

@@ -1,6 +1,6 @@
 package com.happycommunity.user.domain;
 
-import com.happycommunity.framework.common.domain.BaseDO;
+import com.happycommunity.framework.common.model.domain.BaseDO;
 
 /**
  * @author Danny
@@ -12,8 +12,11 @@ public class UserDO extends BaseDO{
 
     private String userName;
     private String mobileNo;
+    private String salt;
     private String password;
     private String email;
+    private String realName;
+    private String idCardNo;
 
     public String getUserName() {
         return userName;
@@ -48,6 +51,33 @@ public class UserDO extends BaseDO{
 
     public UserDO setEmail(String email) {
         this.email = email;
+        return this;
+    }
+
+    public String getSalt() {
+        return salt;
+    }
+
+    public UserDO setSalt(String salt) {
+        this.salt = salt;
+        return this;
+    }
+
+    public String getRealName() {
+        return realName;
+    }
+
+    public UserDO setRealName(String realName) {
+        this.realName = realName;
+        return this;
+    }
+
+    public String getIdCardNo() {
+        return idCardNo;
+    }
+
+    public UserDO setIdCardNo(String idCardNo) {
+        this.idCardNo = idCardNo;
         return this;
     }
 }

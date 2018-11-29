@@ -1,6 +1,6 @@
 package com.happycommunity.uesr.service;
 
-import com.happycommunity.framework.common.dto.user.UserDTO;
+import com.happycommunity.framework.common.model.dto.user.UserDTO;
 
 /**
  * @author Danny
@@ -10,5 +10,8 @@ import com.happycommunity.framework.common.dto.user.UserDTO;
  */
 public interface UserService {
 
-    public UserDTO findUserByUserName(String userName);
+    public UserDTO findByUserName(String userName);
+
+    public UserDTO saveUser(UserDTO userDTO);
+
 }
