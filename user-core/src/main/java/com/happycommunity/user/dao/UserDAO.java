@@ -19,16 +19,16 @@ public interface UserDAO {
     UserDO findByUserName(@Param("userName") String userName);
 
 
-    @Insert("insert into t_user(userName,mobileNo,password,email) values (#{userName},#{mobileNo},#{password},#{email})")
+    @Insert("insert into t_user(userName,mobileNo,salt,password,email,realName,idCardNo) values (#{userName},#{mobileNo},#{salt},#{password},#{email},#{realName},#{idCardNo})")
     @SelectKey(before = false, keyProperty = "id", resultType = Long.class, statementType = StatementType.STATEMENT, statement = "SELECT LAST_INSERT_ID() AS id")
     int insertUserDO(UserDO userDO);
 
     @Insert({
             "<script>"
-                    + "INSERT INTO t_user (userName,mobileNo,password,email) "
+                    + "INSERT INTO t_user (userName,mobileNo,salt,password,email,realName,idCardNo) "
                     + "VALUES "
                     + "<foreach item='user' index='index' collection='userDOList' separator=','>"
-                    + "(#{user.userName},#{user.mobileNo},#{user.password},#{user.email})"
+                    + "(#{user.userName},#{user.mobileNo},#{user.salt},#{user.password},#{user.email},#{user.realName},#{user.idCardNo})"
                     + "</foreach>"
                     + "</script>"
     })

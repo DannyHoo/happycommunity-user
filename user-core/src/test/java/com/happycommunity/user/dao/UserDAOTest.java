@@ -22,7 +22,7 @@ public class UserDAOTest extends AbstractTest {
 
     @Test
     public void insertUserTest(){
-        UserDO userDO=new UserDO().setUserName("Song").setMobileNo("13094805984").setPassword("123456").setEmail("123@qq.com");
+        UserDO userDO=new UserDO().setUserName("Song5").setMobileNo("13094805984").setPassword("123456").setEmail("123@qq.com").setSalt("dfd").setRealName("dfd").setIdCardNo("12312");
         int i=userDAO.insertUserDO(userDO);
         System.out.println(JSON.toJSONString(userDO));
     }
@@ -30,8 +30,8 @@ public class UserDAOTest extends AbstractTest {
     @Test
     public void insertBatcjUserTest(){
         List<UserDO> userDOList=new ArrayList<>();
-        userDOList.add(new UserDO().setUserName("Song1").setMobileNo("12334342343").setPassword("123456").setEmail("123@qq.com"));
-        userDOList.add(new UserDO().setUserName("Song2").setMobileNo("13094805984").setPassword("123456").setEmail("123@qq.com"));
+        userDOList.add(new UserDO().setUserName("Song6").setMobileNo("13094805984").setPassword("123456").setEmail("123@qq.com").setSalt("dfd").setRealName("dfd").setIdCardNo("12312"));
+        userDOList.add(new UserDO().setUserName("Song7").setMobileNo("13094805984").setPassword("123456").setEmail("123@qq.com").setSalt("dfd").setRealName("dfd").setIdCardNo("12312"));
         int i=userDAO.insertUserDOBatch(userDOList);
         System.out.println(JSON.toJSONString(i));
     }

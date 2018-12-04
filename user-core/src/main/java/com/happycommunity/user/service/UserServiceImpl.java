@@ -2,6 +2,8 @@ package com.happycommunity.user.service;
 
 
 import com.happycommunity.framework.common.model.dto.user.UserDTO;
+import com.happycommunity.framework.common.model.enums.ResultStatusEnum;
+import com.happycommunity.framework.common.model.result.ServiceResult;
 import com.happycommunity.framework.core.util.BeanUtil;
 import com.happycommunity.uesr.service.UserService;
 import com.happycommunity.user.dao.UserDAO;
@@ -23,15 +25,21 @@ public class UserServiceImpl implements UserService {
     private UserDAO userDAO;
 
     @Override
-    public UserDTO findByUserName(String userName) {
-        UserDO userDO=userDAO.findByUserName(userName);
-        return BeanUtil.convertIgnoreNullProperty(userDO, UserDTO.class);
+    public ServiceResult<UserDTO> findByUserName(String userName) {
+        UserDO userDO = userDAO.findByUserName(userName);
+        UserDTO userDTO=BeanUtil.convertIgnoreNullProperty(userDO, UserDTO.class);
+        return new ServiceResult<UserDTO>(ResultStatusEnum.SUCCESS,userDTO);
     }
 
     @Override
-    public UserDTO saveUser(UserDTO userDTO) {
-        return null;
+    public ServiceResult<UserDTO>  saveUser(UserDTO userDTO) {
+        UserDO userDO = BeanUtil.convertIgnoreNullProperty(userDTO, UserDO.class);
+        int counts = userDAO.insertUserDO(userDO);
+        if (counts == 1 && userDO.getId() != null) {
+            UserDTO userDTOFound=BeanUtil.convertIgnoreNullProperty(userDO, UserDTO.class);
+            return new ServiceResult<UserDTO>(ResultStatusEnum.SUCCESS,userDTOFound);
+        }
+        return new ServiceResult<UserDTO>(ResultStatusEnum.FAILURE);
     }
-
 
 }
