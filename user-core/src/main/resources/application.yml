@@ -50,7 +50,15 @@ spring:
     # 通过connectProperties属性来打开mergeSql功能；慢SQL记录
     connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
     
+  aop:
+    proxy-target-class: true #false使用jdk代理（默认）；true使用cglib
 
 logging:
   level:
-    com.happycommunity.user.dao: debug
+    com.happycommunity.user.dao: debug #控制台打印sql
+  #config: classpath:logback-spring.xml
+
+system:
+  log:
+    logPath: /Users/dannyhoo/data/logs/happycommunity/user
+    logLevel: INFO

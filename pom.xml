@@ -31,10 +31,12 @@
         <spring-boot.version>1.5.1.RELEASE</spring-boot.version>
         <java.version>1.8</java.version>
         <dubbo-spring-boot>1.0.0</dubbo-spring-boot>
+        <dubbo.version>2.6.2</dubbo.version>
         <mybatis-spring-boot.version>1.2.0</mybatis-spring-boot.version>
         <mysql-connector.version>5.1.39</mysql-connector.version>
         <druid.version>1.1.6</druid.version>
         <junit.version>4.12</junit.version>
+        <logback-version>1.0.13</logback-version>
     </properties>
 
     <!-- 声明项目依赖管理 -->
@@ -69,6 +71,11 @@
                 <artifactId>spring-boot-starter-web</artifactId>
                 <version>${spring-boot.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-aop</artifactId>
+                <version>${spring-boot.version}</version>
+            </dependency>
 
             <!-- ******************************************* 测试相关 ****************************************** -->
             <dependency>
@@ -89,6 +96,11 @@
                 <artifactId>spring-boot-starter-dubbo</artifactId>
                 <version>${dubbo-spring-boot}</version>
             </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>dubbo</artifactId>
+                <version>${dubbo.version}</version>
+            </dependency>
 
             <!-- ****************************************** 数据库相关 *************************************** -->
             <!-- Spring Boot Mybatis-->
@@ -108,8 +120,6 @@
                 <artifactId>druid</artifactId>
                 <version>${druid.version}</version>
             </dependency>
-
-
 
         </dependencies>
     </dependencyManagement>

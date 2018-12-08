@@ -37,6 +37,10 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
 
         <!-- ******************************************* 测试相关 ****************************************** -->
         <dependency>
@@ -49,10 +53,22 @@
             <artifactId>junit</artifactId>
         </dependency>
 
-        <!-- Spring Boot Dubbo-->
+        <!--spring-boot-dubbo依赖-->
         <dependency>
             <groupId>io.dubbo.springboot</groupId>
             <artifactId>spring-boot-starter-dubbo</artifactId>
+            <exclusions>
+                <!--去除com.alibaba依赖-->
+                <exclusion>
+                    <groupId>com.alibaba</groupId>
+                    <artifactId>dubbo</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <!--重新添加2.6.2的dubbo依赖-->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>dubbo</artifactId>
         </dependency>
 
         <!-- ****************************************** 数据库相关 *************************************** -->

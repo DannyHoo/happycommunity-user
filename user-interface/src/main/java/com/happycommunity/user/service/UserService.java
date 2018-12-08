@@ -1,7 +1,8 @@
-package com.happycommunity.uesr.service;
+package com.happycommunity.user.service;
 
 import com.happycommunity.framework.common.model.dto.user.UserDTO;
 import com.happycommunity.framework.common.model.result.ServiceResult;
+import com.happycommunity.user.model.parameter.UserParameter;
 
 /**
  * @author Danny
@@ -11,8 +12,8 @@ import com.happycommunity.framework.common.model.result.ServiceResult;
  */
 public interface UserService {
 
-    public ServiceResult<UserDTO> findByUserName(String userName);
+    public ServiceResult<UserDTO> findByUserName(UserParameter userParameter);
 
-    public ServiceResult<UserDTO> saveUser(UserDTO userDTO);
+    public ServiceResult<UserDTO> saveUser(UserParameter userParameter);
 
 }

@@ -1,10 +1,10 @@
-package com.happycommunity.user.service;
+package com.happycommunity.user.service.impl;
 
 import com.alibaba.fastjson.JSON;
 import com.happycommunity.framework.common.model.dto.user.UserDTO;
 import com.happycommunity.framework.common.model.result.ServiceResult;
-import com.happycommunity.uesr.service.UserService;
 import com.happycommunity.user.AbstractTest;
+import com.happycommunity.user.service.UserService;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -21,9 +21,8 @@ public class UserServiceImplTest extends AbstractTest {
 
     @Test
     public void findByUserNameTest(){
-        ServiceResult<UserDTO> userDTO=userService.findByUserName("Danny");
+        ServiceResult<UserDTO> userDTO=userService.findByUserName(new com.happycommunity.user.model.parameter.UserParameter().setUserName("Danny"));
         System.out.println(JSON.toJSONString(userDTO));
     }
-
 
 }
