@@ -19,7 +19,7 @@ import org.springframework.stereotype.Service;
  * @Created on 2018-11-26 20:11:32
  */
 @Service("userService")
-@com.alibaba.dubbo.config.annotation.Service(version = "1.0.0", interfaceClass = UserService.class)
+@com.alibaba.dubbo.config.annotation.Service(version = "1.0.0", interfaceClass = UserService.class, filter = "dubboContextFilter")
 public class UserServiceImpl implements UserService {
 
     @Autowired
